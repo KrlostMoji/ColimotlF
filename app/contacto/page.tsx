@@ -23,10 +23,9 @@ export default function Page() {
   }
 
   const {register, handleSubmit, reset, formState:{errors}} = useForm({defaultValues: initialValues})
-
   
   const handleContact = async (data:ContactoForm) => {
-    const response = await axios.post('http://localhost:4000/email', data)
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_EMAIL_URL}`, data)
     const mensaje = response.data
     if(mensaje.success){
       toast.success(mensaje.success)
