@@ -22,9 +22,6 @@ export default function Page() {
     mensaje: ''
   }
 
-  console.log(process.env.NEXT_PUBLIC_EMAIL_URL);
-  
-
   const {register, handleSubmit, reset, formState:{errors}} = useForm({defaultValues: initialValues})
   
   const handleContact = async (data:ContactoForm) => {

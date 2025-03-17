@@ -41,6 +41,7 @@ export default function Home() {
               />
               <Link 
                 href={'https://inmobiliaria-campos.vercel.app'}
+                target="blank"
               >
                 <ContenedorProyecto
                   titulo={"Femergy"}
@@ -49,6 +50,7 @@ export default function Home() {
               </Link>
               <Link
                 href={'https://mehta-rana.vercel.app'}
+                target="blank"
               >
                 <ContenedorProyecto
                   titulo={"Paquetería"}
