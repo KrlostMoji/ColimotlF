@@ -37,16 +37,25 @@ export default function Home() {
             <div className="grid grid-flow-row md:grid-flow-col gap-5 pt-4">
               <ContenedorProyecto
                 titulo={"Mi restaurante"}
-                imagen={"/mirestaurante.png"}
+                imagen={"/maravillas.webp"}
               />
-              <ContenedorProyecto
-                titulo={"Femergy"}
-                imagen={"/femergy.webp"}
-              />
-              <ContenedorProyecto
-                titulo={"Paquetería"}
-                imagen={"/paqueteria.jpg"}
-              />             
+              <Link 
+                href={'https://inmobiliaria-campos.vercel.app'}
+              >
+                <ContenedorProyecto
+                  titulo={"Femergy"}
+                  imagen={"/inmobiliaria.webp"}
+                />
+              </Link>
+              <Link
+                href={'https://mehta-rana.vercel.app'}
+              >
+                <ContenedorProyecto
+                  titulo={"Paquetería"}
+                  imagen={"/mehta-ranna.webp"}
+                />
+              </Link>
+                           
             </div>
             <div className="flex justify-center">
                 <Link

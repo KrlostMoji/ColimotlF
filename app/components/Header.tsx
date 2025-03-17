@@ -33,8 +33,8 @@ export default function Header() {
           <Link
             href={'/'}
           >
-            <Image src={'/logo-mobile.png'} width={100} height={100} alt='logo-mobile' className='rounded-lg lg:hidden animate-fade-up' />
-            <Image src={'/logo.png'} width={140} height={140} alt='logo' className='rounded-lg hidden lg:block'></Image>
+            <Image src={'/logo-mobile2.png'} width={100} height={100} alt='logo-mobile' className='rounded-lg lg:hidden animate-fade-up' />
+            <Image src={'/logo2.png'} width={140} height={140} alt='logo' className='rounded-lg hidden lg:block'></Image>
           </Link>
           
           <div className='lg:hidden z-50 lg:z-0'>
