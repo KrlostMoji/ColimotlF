@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import ContactForm from '../components/ContactForm'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import './styles.css'
 
 type ContactoForm = {
   nombre: string
@@ -14,7 +15,7 @@ type ContactoForm = {
 }
 
 export default function Page() {
-
+    
   const initialValues = {
     nombre: '',
     email: '',
@@ -22,14 +23,33 @@ export default function Page() {
     mensaje: ''
   }
 
+  //Ejecutar codigo del lado del cliente === para el servidor
+  const isClient = () => typeof window !== 'undefined'  
+
   const {register, handleSubmit, reset, formState:{errors}} = useForm({defaultValues: initialValues})
   
   const handleContact = async (data:ContactoForm) => {
+
+    if(isClient()){
+      const spinner = document.querySelector('.sk-circle')
+      spinner?.classList.remove('hidden')
+      const button = document.querySelector('#submitButton')
+      button?.setAttribute('disabled', 'true')
+    } 
     const response = await axios.post(`${process.env.NEXT_PUBLIC_EMAIL_URL}`, data)
     const mensaje = response.data
     if(mensaje.success){
-      toast.success(mensaje.success)
-      reset()
+      if(isClient()){
+        const spinner = document.querySelector('.sk-circle')
+        const button = document.querySelector('#submitButton')
+        setTimeout(() => {
+          spinner?.classList.add('hidden')
+          button?.removeAttribute('disabled')
+          reset()
+          toast.success(mensaje.success)
+        }, 1000);
+      } 
+      
     }else{
       toast.error(mensaje.error)
     }    
@@ -53,11 +73,27 @@ export default function Page() {
             register={register}
             errors={errors}
           />
-            <input 
+            <div className={`sk-circle hidden`}>
+              <div className="sk-circle1 sk-child"></div>
+              <div className="sk-circle2 sk-child"></div>
+              <div className="sk-circle3 sk-child"></div>
+              <div className="sk-circle4 sk-child"></div>
+              <div className="sk-circle5 sk-child"></div>
+              <div className="sk-circle6 sk-child"></div>
+              <div className="sk-circle7 sk-child"></div>
+              <div className="sk-circle8 sk-child"></div>
+              <div className="sk-circle9 sk-child"></div>
+              <div className="sk-circle10 sk-child"></div>
+              <div className="sk-circle11 sk-child"></div>
+              <div className="sk-circle12 sk-child"></div>
+            </div>
+            <input
+            id='submitButton' 
             type='submit'
             value='Enviar email'
-            className='bg-blueLight w-full lg:w-fit rounded-md py-4 px-14 uppercase font-bold cursor-pointer transition-colors'
+            className={`bg-blueLight w-full lg:w-fit rounded-md py-4 px-14 uppercase font-bold cursor-pointer transition-colors`}
           />
+
           </fieldset>
         </form>
       </div>
